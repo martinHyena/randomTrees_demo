@@ -10,25 +10,33 @@ Created on Tue Apr 18 17:20:40 2017
 
 import pandas as pd
 
-#read in data from csv file and output a ndarray
+#read in data from csv file and output a ndarray data set and list of label
 def csvToNdarray(fileName):
-    return pd.read_csv(fileName, sep=',', header=1).values
+    dataSet=pd.read_csv(fileName, sep=',', header=0)
+    return dataSet.values, dataSet.columns.tolist()
 
-#read in data from csv file and output a list
+#read in data from csv file and output a list of data set and list of label
 def csvToList(fileName):
-    return pd.read_csv(fileName, sep=',', header=1).values.tolist()
+    dataSet=pd.read_csv(fileName, sep=',', header=0)
+    return dataSet.values.tolist(), dataSet.columns.tolist()
+    
 
-#read in data from txt file with a ',' delimiter and output a ndarray
+#read in data from txt file with a ',' delimiter and output a ndarray data set and list of label
 def txtCommaToNdarray(fileName):
-    return pd.read_csv(fileName, sep=',', header=None).as_matrix()
+    dataSet=pd.read_csv(fileName, sep=',', header=0)
+    return dataSet.values, dataSet.columns.tolist()
 
-#read in data from txt file with a ',' delimiter and output a list
+#read in data from txt file with a ',' delimiter and output a list of data set and list of label
 def txtCommaToList(fileName):
-    return pd.read_csv(fileName, sep=',', header=None).as_matrix().tolist()
+    dataSet=pd.read_csv(fileName, sep=',', header=0)
+    return dataSet.values.tolist(), dataSet.columns.tolist()
 
+#read in data from txt file with a ' ' delimiter and output a ndarray data set and list of label
 def txtSpaceToNdarray(fileName):
-    return pd.read_csv(fileName, sep=' ', header=None).as_matrix()
+    dataSet=pd.read_csv(fileName, sep=' ', header=0)
+    return dataSet.values, dataSet.columns.tolist()
 
-#read in data from txt file with space delimiter and output a list
+#read in data from txt file with space delimiter and output a list of data set and list of label
 def txtSpaceToList(fileName):
-   return pd.read_csv(fileName, sep=' ', header=None).as_matrix().tolist()
+    dataSet=pd.read_csv(fileName, sep=' ', header=0)
+    return dataSet.values.tolist(), dataSet.columns.tolist()
