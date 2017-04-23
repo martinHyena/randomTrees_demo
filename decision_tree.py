@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Apr 21 12:32:33 2017
-Author: Long Yu
+Hyena Yu
 Descriptions: Implementation of Decision Tree
 """
 
@@ -81,7 +81,8 @@ def majorCount(classList):
 
 def createTree(data, labels):
     """
-    
+         data: ndarray 
+         labels: column names - a list
     """
     y = data[:, -1]
     uniqueSet = np.unique(y, return_counts=True)
@@ -100,6 +101,8 @@ def createTree(data, labels):
         newData = splitData(data, bestFeat, value)
         myTree[bestFeatLabel][value] = createTree(newData, subLabels)
     return myTree
+
+
 
 
 if __name__ == '__main__':
