@@ -8,6 +8,7 @@ Descriptions: Implementation of Decision Tree
 
 import numpy as np
 from math import log
+import ult
 from operator import itemgetter
 # create a artificial data that simulating tree building
 # First We need to write the codes that computing entropy
@@ -29,7 +30,7 @@ def computeEntropy(target):
     for key in countVar:
         prob = countVar[key]/len(target)
         entropy -= prob*log(prob,2)
-    
+      
     return entropy
 
 def splitData(x, iColumn, value):
@@ -88,7 +89,7 @@ def createTree(data, labels):
     uniqueSet = np.unique(y, return_counts=True)
     if  len(uniqueSet) == y.shape[0]: # check if target variables are the same
         return y[0]
-    if len(dataSet[0]) == 1:
+    if len(data[0]) == 1:
         return majorCount(y) # check if data has any features 
     bestFeat = findFeature(data) 
     bestFeatLabel = labels[bestFeat]
@@ -106,6 +107,7 @@ def createTree(data, labels):
 
 
 if __name__ == '__main__':
+    """
     dataSet = np.array([[1, 1, 'yes'],
                         [1, 1, 'yes'],
                         [1, 0, 'no'],
@@ -114,3 +116,6 @@ if __name__ == '__main__':
     labels = ['no surfacing','flippers']
     createTree(dataSet, labels)
     findFeature(dataSet)
+    """
+    trainData = ult.csvToNdarray("./test/train.csv")
+    print(createTree(trainData))
