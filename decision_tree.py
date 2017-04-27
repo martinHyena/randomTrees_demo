@@ -10,6 +10,7 @@ import numpy as np
 from math import log
 import ult
 from operator import itemgetter
+import treePlotter as tp
 # create a artificial data that simulating tree building
 # First We need to write the codes that computing entropy
 
@@ -107,15 +108,15 @@ def createTree(data, labels):
 
 
 if __name__ == '__main__':
-    """
     dataSet = np.array([[1, 1, 'yes'],
                         [1, 1, 'yes'],
                         [1, 0, 'no'],
                         [0, 1, 'no'],
                         [0, 1, 'no']])
     labels = ['no surfacing','flippers']
-    createTree(dataSet, labels)
-    findFeature(dataSet)
-    """
-    trainData = ult.csvToNdarray("./test/train.csv")
-    print(createTree(trainData))
+    #createTree(dataSet, labels)
+    #findFeature(dataSet)
+    #trainData, labels = ult.csvToNdarray("./test/train.csv")
+    fit = createTree(dataSet, labels)
+    print(fit)
+    tp.createPlot(fit)
